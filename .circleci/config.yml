@@ -11,7 +11,7 @@ jobs:
      - run:
          name: Login to DockerHub
          command: docker login -u $DOCKER_USER -p $DOCKER_PASS
-     - run: ./gradlew -Pprod bootJar jibDockerBuild
+     - run: chmod +x gradlew && ./gradlew -Pprod bootJar jibDockerBuild
      - run: docker tag appname $DOCKER_USER/appname:$CIRCLE_BUILD_NUM
      - run: docker push $DOCKER_USER/appname:$CIRCLE_BUILD_NUM
 
